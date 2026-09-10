@@ -1,7 +1,9 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import Home from './home.jsx';
+import Header from './header.jsx';
 
-const root = createRoot(document.getElementById('app'));
+const root = createRoot(document.getElementById('Header'));
 
-root.render(<Home />);
+root.render(
+    <Header />
+);
