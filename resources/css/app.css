@@ -4,15 +4,35 @@
 @source '../../storage/framework/views/*.php';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans: 'Comic Sans MS', 'Comic Sans', cursive;
 
-    --color-brown: #4A3024;
-    --color-orange: #C8753D;
-    --color-cream: #F7F1E8;
-    --color-sand: #E9D8C2;
+    /* Basis */
+    --color-black: #1A1A1A;
+    --color-white: #F8F5F0;
+    /* crème / off-white */
+    --color-cream: #F8F5F0;
+    /* alias */
+    --color-sand: #F8F5F0;
+    /* alias voor body */
+
+    /* Accenten */
+    --color-brown: #8B5E3C;
+    --color-green: #5C6B4A;
+    --color-yellow: #D4A017;
 }
 
 .nav-link {
-    @apply text-lg hover:scale-110 transition-transform duration-200 inline-block hover:text-orange hover:underline;
+    @apply text-lg hover:scale-110 transition-transform duration-200 inline-block hover:text-yellow hover:underline;
+}
+
+.card {
+    @apply bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col;
+}
+
+.card-content {
+    @apply p-6 flex flex-col flex-1;
+}
+
+.btn {
+    @apply bg-brown text-cream font-bold py-2 px-4 rounded-lg hover:bg-yellow hover:text-black transition-all duration-200 hover:scale-105 shadow-md flex items-center justify-center mt-auto;
 }
