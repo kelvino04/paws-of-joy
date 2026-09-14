@@ -52,7 +52,7 @@ function Footer() {
                             Meer informatie
                         </h3>
 
-                        <div className="flex flex-col gap-2">
+                        <div className="flex flex-col gap-2 items-center md:items-start">
                             <a
                                 href="https://www.facebook.com/pawsofjoy"
                                 target="_blank"
