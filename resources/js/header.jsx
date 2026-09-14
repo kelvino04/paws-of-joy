@@ -22,6 +22,9 @@ function Header() {
                 <a href="/trackingLessons" className="nav-link">Speurlessen</a>
                 <a href="/tracking" className="nav-link">Speurhonden</a>
                 <a href="/contact" className="nav-link">Contact</a>
+                <a href="https://www.facebook.com/pawsofjoy" target="_blank" rel="noopener noreferrer" className="hover:text-yellow transition-colors flex flex-row items-center gap-2">
+                    <img src="/images/2023_Facebook_icon.svg.webp" alt="Facebook" className="h-6 w-6" />
+                </a>
             </nav>
             {menuOpen && (
                 <nav className="md:hidden flex flex-col items-center gap-4 py-4 absolute top-full left-0 w-full bg-green z-10">

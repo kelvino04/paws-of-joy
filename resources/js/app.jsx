@@ -1,9 +1,10 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import Header from './header.jsx';
+import Footer from './footer.jsx';
 
-const root = createRoot(document.getElementById('Header'));
+const headerRoot = createRoot(document.getElementById('Header'));
+const footerRoot = createRoot(document.getElementById('Footer'));
 
-root.render(
-    <Header />
-);
+headerRoot.render(<Header />);
+footerRoot.render(<Footer />);

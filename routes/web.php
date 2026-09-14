@@ -29,3 +29,11 @@ Route::get('/contact', function () {
 Route::get('/admin', function () {
     return view('admin');
 });
+
+Route::get('/termsAndConditions', function () {
+    return view('termsAndConditions');
+});
+
+Route::get('/privacy', function () {
+    return view('privacy');
+});

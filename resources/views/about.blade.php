@@ -22,7 +22,7 @@
                     Mijn naam is Miriam Sophie,
                     ik ben 48 jaar en geboren en getogen in Oosterhout. Dieren zijn altijd een
                     belangrijk onderdeel van mijn leven geweest. Mijn liefde voor honden, mijn ervaring en mijn kennis
-                    van hondengedrag vormen samen de basis van Paws of Joy.</p>
+                    van hondengedrag vormen samen de basis van Paws of joy.</p>
             </div>
             <img src="{{ asset('images/miriam.jpeg') }}" alt="Miriam Sophie met haar honden"
                 class="w-full md:w-1/2 h-80 md:h-96 object-cover rounded-2xl shadow-lg">
