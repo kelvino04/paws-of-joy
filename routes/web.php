@@ -37,3 +37,5 @@ Route::get('/termsAndConditions', function () {
 Route::get('/privacy', function () {
     return view('privacy');
 });
+
+Route::post('/contact', [App\Http\Controllers\ContactController::class, 'getData'])->name('contact.getData');

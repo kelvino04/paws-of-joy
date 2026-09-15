@@ -1,19 +1,10 @@
-<!DOCTYPE html>
-<html>
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Paws of joy</title>
+@section('title', 'Paws of joy')
 
-    @vite(['resources/css/app.css', 'resources/js/app.jsx'])
-</head>
+@section('content')
 
-<body>
     <main class="min-h-screen bg-sand">
-
-        <div id="Header"></div>
 
         <div class="relative h-80 md:h-100">
             <img src="{{ asset('images/roedel-2.jpg') }}" alt="Honden in een veld aan het rennen"
@@ -40,11 +31,18 @@
         </div>
 
         <div id="Services" class="bg-cream px-4 md:px-6 py-12 md:py-16">
-            <h3 class="text-brown font-bold text-2xl md:text-4xl text-center mb-8">Elke hond verdient zijn eigen moment
+            <h3 class="text-brown font-bold text-2xl md:text-4xl text-center mb-8">Elke hond verdient zijn eigen
+                moment
                 van plezier.</h3>
-            <p class="text-brown font-normal text-lg text-center p-4 max-w-2xl mx-auto pb-10">Bij Paws of joy staat het
-                welzijn en plezier van jouw hond voorop. Ik bied persoonlijke begeleiding en activiteiten die passen bij
-                iedere hond. Van een heerlijke wandeling tot het ontdekken van natuurlijk speurtalent: samen kijken we
+            <p class="text-brown font-normal text-lg text-center p-4 max-w-2xl mx-auto pb-10">Bij Paws of joy
+                staat
+                het
+                welzijn en plezier van jouw hond voorop. Ik bied persoonlijke begeleiding en activiteiten die
+                passen
+                bij
+                iedere hond. Van een heerlijke wandeling tot het ontdekken van natuurlijk speurtalent: samen
+                kijken
+                we
                 naar wat jouw hond nodig heeft en waar hij blij van wordt.</p>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
                 <div class="card">
@@ -52,8 +50,11 @@
                         class="w-full h-56 object-cover">
                     <div class="card-content">
                         <h4 class="text-brown text-2xl font-bold mb-3">Wandelingen</h4>
-                        <p class="text-brown mb-6">Tijdens mijn wandelingen krijgt jouw hond volop beweging, aandacht en
-                            ruimte om lekker hond te zijn. Ik stem de wandeling af op wat jouw hond nodig heeft en zorg
+                        <p class="text-brown mb-6">Tijdens mijn wandelingen krijgt jouw hond volop beweging,
+                            aandacht en
+                            ruimte om lekker hond te zijn. Ik stem de wandeling af op wat jouw hond nodig heeft
+                            en
+                            zorg
                             voor een fijne, veilige ervaring.</p>
                         <a href="/tarifs" class="btn">Bekijk
                             tarieven</a>
@@ -64,8 +65,11 @@
                         class="w-full h-56 object-cover">
                     <div class="card-content">
                         <h4 class="text-brown text-2xl font-bold mb-3">Speurlessen</h4>
-                        <p class="text-brown mb-6">Tijdens mijn speurlessen leert jouw hond op een leuke manier zijn
-                            natuurlijke neus te gebruiken. Ik begeleid jullie stap voor stap en pas de oefeningen aan op
+                        <p class="text-brown mb-6">Tijdens mijn speurlessen leert jouw hond op een leuke manier
+                            zijn
+                            natuurlijke neus te gebruiken. Ik begeleid jullie stap voor stap en pas de
+                            oefeningen
+                            aan op
                             het niveau van jouw hond.</p>
                         <a href="/trackingLessons" class="btn">Neem
                             contact op voor een les</a>
@@ -76,8 +80,10 @@
                         class="w-full h-56 object-cover">
                     <div class="card-content">
                         <h4 class="text-brown text-2xl font-bold mb-3">Speurhonden</h4>
-                        <p class="text-brown mb-6">Met mijn speurhonden help ik bij het terugvinden van vermiste honden.
-                            Door hun goede neus en mijn ervaring kunnen zij gericht worden ingezet wanneer een hond
+                        <p class="text-brown mb-6">Met mijn speurhonden help ik bij het terugvinden van vermiste
+                            honden.
+                            Door hun goede neus en mijn ervaring kunnen zij gericht worden ingezet wanneer een
+                            hond
                             vermist raakt.</p>
                         <a href="/tracking" class="btn">Bekijk
                             onze speurhonden</a>
@@ -86,9 +92,5 @@
             </div>
         </div>
 
-        <div id="Footer"></div>
-
     </main>
-</body>
-
-</html>
+@endsection
