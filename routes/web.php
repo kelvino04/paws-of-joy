@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Price;
+
 
 Route::get('/', function () {
     return view('home');
@@ -11,7 +13,11 @@ Route::get('/about', function () {
 });
 
 Route::get('/tarifs', function () {
-    return view('tarifs');
+    $prices = Price::where('active', true)
+        ->orderBy('sort_order')
+        ->get();
+
+    return view('tarifs', compact('prices'));
 });
 
 Route::get('/trackingLessons', function () {
