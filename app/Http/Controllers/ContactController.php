@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\ContactMessage;
+use App\Mail\ContactMessage as ContactMessageMail;
+use App\Models\ContactMessage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -24,8 +25,16 @@ class ContactController extends Controller
             ]
         );
 
+        ContactMessage::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'subject' => $request->subject,
+            'message' => $request->message,
+        ]);
+
         Mail::to('info@pawsofjoy.nl')->send(
-            new ContactMessage(
+            new ContactMessageMail(
                 $request->name,
                 $request->email,
                 $request->phone,

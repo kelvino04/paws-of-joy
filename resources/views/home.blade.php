@@ -45,7 +45,7 @@
                 we
                 naar wat jouw hond nodig heeft en waar hij blij van wordt.</p>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                <div class="card">
+                <div class="card reveal">
                     <img src="{{ asset('images/roedel-1.jpg') }}" alt="Honden in een veld aan het rennen"
                         class="w-full h-56 object-cover">
                     <div class="card-content">
@@ -60,7 +60,7 @@
                             tarieven</a>
                     </div>
                 </div>
-                <div class="card">
+                <div class="card reveal">
                     <img src="{{ asset('images/trackingLesson.jpeg') }}" alt="Honden aan het speuren in het bos"
                         class="w-full h-56 object-cover">
                     <div class="card-content">
@@ -75,7 +75,7 @@
                             contact op voor een les</a>
                     </div>
                 </div>
-                <div class="card">
+                <div class="card reveal">
                     <img src="{{ asset('images/ginEnMil.jpeg') }}" alt="Honden in een veld aan het rennen"
                         class="w-full h-56 object-cover">
                     <div class="card-content">

@@ -6,7 +6,7 @@ function LoadingScreen() {
             id="loadingScreen"
             className="fixed inset-0 z-50 flex items-center justify-center bg-cream"
         >
-            <div className="relative w-60 aspect-[485/514]">
+            <div className="relative w-60 aspect-485/514">
 
                 <img
                     src="/images/pojLogoNoPaws.png"

@@ -6,6 +6,9 @@ import Footer from './footer.jsx';
 import ContactForm from './contactForm.jsx';
 import LoadingScreen from './loadingScreen.jsx';
 
+if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+}
 
 // Loading screen
 const hasSeenLoadingScreen = sessionStorage.getItem('hasSeenLoadingScreen');
@@ -68,7 +71,7 @@ requestAnimationFrame(() => {
     const pageContent = document.getElementById('page-content');
 
     if (pageContent) {
-        pageContent.style.visibility = 'visible';
+        pageContent.classList.add('page-loaded');
     }
 });
 
@@ -85,3 +88,45 @@ setTimeout(() => {
         }, 700);
     }
 }, 2000);
+
+const revealElements = document.querySelectorAll('.reveal');
+
+const revealObserver = new IntersectionObserver(
+    (entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('reveal-visible');
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    },
+    {
+        threshold: 0.15,
+    }
+);
+
+revealElements.forEach((element) => {
+    revealObserver.observe(element);
+});
+
+const contactElements = document.querySelectorAll(
+    '.contact-slide-left, .contact-slide-right'
+);
+
+const contactObserver = new IntersectionObserver(
+    (entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+                contactObserver.unobserve(entry.target);
+            }
+        });
+    },
+    {
+        threshold: 0.15,
+    }
+);
+
+contactElements.forEach((element) => {
+    contactObserver.observe(element);
+});

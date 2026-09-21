@@ -32,8 +32,7 @@
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
 
                 <!-- Contactformulier -->
-                <div class="lg:col-span-2 bg-white rounded-3xl shadow-xl p-6 md:p-10">
-
+                <div class="contact-slide-left lg:col-span-2 bg-white rounded-3xl shadow-xl p-6 md:p-10">
                     <h2 class="text-2xl md:text-3xl font-bold italic text-green mb-2">
                         Stuur mij een bericht
                     </h2>
@@ -47,8 +46,7 @@
                 </div>
 
                 <!-- Contactinformatie -->
-                <aside class="bg-green rounded-3xl shadow-xl p-6 md:p-8 text-black">
-
+                <aside class="contact-slide-right bg-green rounded-3xl shadow-xl p-6 md:p-8 text-black">
                     <img src="/images/pojLogo.png" alt="Paws of joy logo" class="h-28 w-auto mx-auto mb-6">
 
                     <h2 class="text-2xl font-bold italic mb-6 text-center">
@@ -74,7 +72,7 @@
 
                             <a href="https://mail.google.com/mail/?view=cm&fs=1&to=info@pawsofjoy.nl" target="_blank"
                                 rel="noopener noreferrer"
-                                class="underline hover:text-yellow transition-colors break-words">
+                                class="underline hover:text-yellow transition-colors wrap-break-word">
                                 info@pawsofjoy.nl
                             </a>
                         </div>

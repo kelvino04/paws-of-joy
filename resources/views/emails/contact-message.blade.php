@@ -3,7 +3,7 @@
 <p><strong>Naam:</strong> {{ $name }}</p>
 <p><strong>E-mail:</strong> {{ $email }}</p>
 <p><strong>Telefoon:</strong> {{ $phone ?? 'Niet opgegeven' }}</p>
-<p><strong>Onderwerp:</strong> {{ $subject }}</p>
+<p><strong>Onderwerp:</strong> {{ $messageSubject }}</p>
 
 <p><strong>Bericht:</strong></p>
-<p>{{ $message }}</p>
+<p>{{ $messageContent }}</p>
