@@ -22,6 +22,8 @@
 
     <div id="LoadingScreen"></div>
 
+    <div id="SuccessMessage" data-message="{{ session('success') }}"></div>
+
     <div id="page-content">
 
         <div id="Header"></div>

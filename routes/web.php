@@ -2,7 +2,15 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Price;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ContactController;
 
+
+/*
+|--------------------------------------------------------------------------
+| Publieke pagina's
+|--------------------------------------------------------------------------
+*/
 
 Route::get('/', function () {
     return view('home');
@@ -32,10 +40,6 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
-Route::get('/admin', function () {
-    return view('admin');
-});
-
 Route::get('/termsAndConditions', function () {
     return view('termsAndConditions');
 });
@@ -44,4 +48,45 @@ Route::get('/privacy', function () {
     return view('privacy');
 });
 
-Route::post('/contact', [App\Http\Controllers\ContactController::class, 'getData'])->name('contact.getData');
+
+/*
+|--------------------------------------------------------------------------
+| Contactformulier
+|--------------------------------------------------------------------------
+*/
+
+Route::post('/contact', [ContactController::class, 'getData'])
+    ->name('contact.getData');
+
+
+/*
+|--------------------------------------------------------------------------
+| Authenticatie
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/login', [AuthController::class, 'showLogin'])
+    ->name('login');
+
+Route::post('/login', [AuthController::class, 'login'])
+    ->name('login.post');
+
+Route::post('/logout', [AuthController::class, 'logout'])
+    ->name('logout');
+
+
+/*
+|--------------------------------------------------------------------------
+| Admin
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/admin', function () {
+    return view('admin');
+})->middleware('admin');
+
+Route::get('/admin/status', function () {
+    return response()->json([
+        'authenticated' => auth()->check() && auth()->user()->is_admin,
+    ]);
+});

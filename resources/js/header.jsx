@@ -1,8 +1,20 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 
 function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
+    const [isAdmin, setIsAdmin] = useState(false);
+
+    useEffect(() => {
+        fetch('/admin/status')
+            .then(response => response.json())
+            .then(data => {
+                setIsAdmin(data.authenticated);
+            })
+            .catch(() => {
+                setIsAdmin(false);
+            });
+    }, []);
     return (
         <header className="flex flex-row items-center justify-between bg-green px-4 lg:px-10 py-2 relative">
             <div className="flex flex-row items-center gap-4">
@@ -22,6 +34,11 @@ function Header() {
                 <a href="/trackingLessons" className="nav-link">Speurlessen</a>
                 <a href="/tracking" className="nav-link">Speurhonden</a>
                 <a href="/contact" className="nav-link">Contact</a>
+                {isAdmin && (
+                    <a href="/admin" className="nav-link">
+                        Admin paneel
+                    </a>
+                )}
                 <a href="https://www.facebook.com/pawsofjoy" target="_blank" rel="noopener noreferrer" className="hover:text-yellow transition-colors flex flex-row items-center gap-2">
                     <img src="/images/2023_Facebook_icon.svg.webp" alt="Facebook" className="h-6 w-6" />
                 </a>
@@ -34,6 +51,14 @@ function Header() {
                     <a href="/trackingLessons" className="nav-link">Speurlessen</a>
                     <a href="/tracking" className="nav-link">Speurhonden</a>
                     <a href="/contact" className="nav-link">Contact</a>
+                    {isAdmin && (
+                        <a href="/admin" className="nav-link">
+                            Admin paneel
+                        </a>
+                    )}
+                    <a href="https://www.facebook.com/pawsofjoy" target="_blank" rel="noopener noreferrer" className="hover:text-yellow transition-colors flex flex-row items-center gap-2">
+                        <img src="/images/2023_Facebook_icon.svg.webp" alt="Facebook" className="h-6 w-6" />
+                    </a>
                 </nav>
             )}
         </header>

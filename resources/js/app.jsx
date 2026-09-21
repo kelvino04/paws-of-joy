@@ -5,6 +5,7 @@ import Header from './header.jsx';
 import Footer from './footer.jsx';
 import ContactForm from './contactForm.jsx';
 import LoadingScreen from './loadingScreen.jsx';
+import SuccessMessage from './successMessage.jsx';
 
 if ('scrollRestoration' in history) {
     history.scrollRestoration = 'manual';
@@ -130,3 +131,22 @@ const contactObserver = new IntersectionObserver(
 contactElements.forEach((element) => {
     contactObserver.observe(element);
 });
+
+
+//success message
+const successMessageElement = document.getElementById('SuccessMessage');
+
+if (successMessageElement) {
+    const message = successMessageElement.dataset.message;
+
+    const successMessageRoot = createRoot(successMessageElement);
+
+    successMessageRoot.render(
+        <SuccessMessage
+            message={message}
+            onClose={() => {
+                successMessageRoot.unmount();
+            }}
+        />
+    );
+}
