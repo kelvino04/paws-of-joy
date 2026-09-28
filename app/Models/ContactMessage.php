@@ -12,5 +12,9 @@ class ContactMessage extends Model
         'phone',
         'subject',
         'message',
+        'viewed_at',
+    ];
+    protected $casts = [
+        'viewed_at' => 'datetime',
     ];
 }

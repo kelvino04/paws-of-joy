@@ -3,10 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use App\Models\Price;
 use App\Models\PageContent;
+use App\Models\ContactMessage;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PriceController;
 use App\Http\Controllers\PageContentController;
+use App\Http\Controllers\ContactMessageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -88,7 +90,9 @@ Route::post('/logout', [AuthController::class, 'logout'])
 */
 
 Route::get('/admin', function () {
-    return view('admin.admin');
+    $unreadMessages = ContactMessage::whereNull('viewed_at')->count();
+
+    return view('admin.admin', compact('unreadMessages'));
 })->middleware('admin');
 
 Route::get('/admin/status', function () {
@@ -134,4 +138,19 @@ Route::prefix('admin/pages')
 
         Route::put('/home', [PageContentController::class, 'updateHome'])
             ->name('home.update');
+    });
+
+Route::prefix('admin/contact-messages')
+    ->middleware('admin')
+    ->name('admin.contact-messages.')
+    ->group(function () {
+
+        Route::get('/', [ContactMessageController::class, 'index'])
+            ->name('index');
+
+        Route::get('/{contactMessage}', [ContactMessageController::class, 'show'])
+            ->name('show');
+
+        Route::delete('/{contactMessage}', [ContactMessageController::class, 'destroy'])
+            ->name('destroy');
     });

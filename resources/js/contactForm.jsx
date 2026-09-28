@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function ContactForm() {
+function ContactForm({ onSuccess }) {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -31,8 +31,6 @@ function ContactForm() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-
-        console.log(formData);
 
         fetch('/contact', {
             method: 'POST',
@@ -66,7 +64,16 @@ function ContactForm() {
                     message: '',
                 });
 
-                alert('We hebben je bericht ontvangen. We nemen zo snel mogelijk contact met je op.');
+                setErrors({});
+
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth',
+                });
+
+                onSuccess(
+                    'We hebben je bericht ontvangen. We nemen zo snel mogelijk contact met je op.'
+                );
             })
             .catch(error => {
                 console.log('Validation errors:', error);

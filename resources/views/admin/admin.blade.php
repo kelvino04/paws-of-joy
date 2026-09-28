@@ -68,7 +68,7 @@
 
 
                 {{-- Contactberichten --}}
-                <article class="card reveal">
+                <article class="card">
 
                     <div class="card-content">
 
@@ -76,13 +76,27 @@
                             Contactberichten
                         </h2>
 
-                        <p class="text-brown leading-relaxed mb-6">
-                            Bekijk de berichten die via het contactformulier
-                            op de website zijn binnengekomen.
+                        <p class="text-brown leading-relaxed mb-4">
+                            Bekijk de berichten die via het contactformulier zijn ontvangen.
                         </p>
 
-                        <a href="/admin/contact-messages" class="btn">
-                            Berichten bekijken
+                        <div class="mb-6">
+
+                            @if ($unreadMessages > 0)
+                                <p class="text-green font-bold text-lg">
+                                    {{ $unreadMessages }}
+                                    {{ $unreadMessages === 1 ? 'ongelezen bericht' : 'ongelezen berichten' }}
+                                </p>
+                            @else
+                                <p class="text-brown font-bold">
+                                    Geen ongelezen berichten
+                                </p>
+                            @endif
+
+                        </div>
+
+                        <a href="{{ route('admin.contact-messages.index') }}" class="btn">
+                            Bekijk contactberichten
                         </a>
 
                     </div>

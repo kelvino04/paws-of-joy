@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { createRoot } from 'react-dom/client';
 
 import Header from './header.jsx';
@@ -10,6 +10,24 @@ import SuccessMessage from './successMessage.jsx';
 if ('scrollRestoration' in history) {
     history.scrollRestoration = 'manual';
 }
+
+
+// Contactformulier + succesmelding
+function ContactFormWrapper() {
+    const [successMessage, setSuccessMessage] = useState('');
+
+    return (
+        <>
+            <ContactForm onSuccess={setSuccessMessage} />
+
+            <SuccessMessage
+                message={successMessage}
+                onClose={() => setSuccessMessage('')}
+            />
+        </>
+    );
+}
+
 
 // Loading screen
 const hasSeenLoadingScreen = sessionStorage.getItem('hasSeenLoadingScreen');
@@ -63,7 +81,7 @@ const contactFormElement = document.getElementById('ContactForm');
 
 if (contactFormElement) {
     const contactFormRoot = createRoot(contactFormElement);
-    contactFormRoot.render(<ContactForm />);
+    contactFormRoot.render(<ContactFormWrapper />);
 }
 
 
@@ -90,6 +108,7 @@ setTimeout(() => {
     }
 }, 2000);
 
+
 const revealElements = document.querySelectorAll('.reveal');
 
 const revealObserver = new IntersectionObserver(
@@ -109,6 +128,7 @@ const revealObserver = new IntersectionObserver(
 revealElements.forEach((element) => {
     revealObserver.observe(element);
 });
+
 
 const contactElements = document.querySelectorAll(
     '.contact-slide-left, .contact-slide-right'
@@ -133,20 +153,22 @@ contactElements.forEach((element) => {
 });
 
 
-//success message
+// Success message voor Laravel meldingen
 const successMessageElement = document.getElementById('SuccessMessage');
 
 if (successMessageElement) {
     const message = successMessageElement.dataset.message;
 
-    const successMessageRoot = createRoot(successMessageElement);
+    if (message) {
+        const successMessageRoot = createRoot(successMessageElement);
 
-    successMessageRoot.render(
-        <SuccessMessage
-            message={message}
-            onClose={() => {
-                successMessageRoot.unmount();
-            }}
-        />
-    );
+        successMessageRoot.render(
+            <SuccessMessage
+                message={message}
+                onClose={() => {
+                    successMessageRoot.unmount();
+                }}
+            />
+        );
+    }
 }

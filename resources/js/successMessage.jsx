@@ -1,4 +1,6 @@
 import { useEffect } from 'react';
+import { createPortal } from 'react-dom';
+import { X } from 'lucide-react';
 
 function SuccessMessage({ message, onClose }) {
     useEffect(() => {
@@ -17,24 +19,23 @@ function SuccessMessage({ message, onClose }) {
         return null;
     }
 
-    return (
+    return createPortal(
         <div
             className="
                 fixed
                 top-24
-                right-6
-                z-50
+                right-0
+                z-9999
                 bg-green
                 text-white
                 px-6
                 py-4
                 rounded-xl
-                shadow-lg
+                shadow-xl
                 flex
                 items-center
                 gap-3
-                transition-all
-                duration-300
+                max-w-sm
             "
         >
             <span className="font-bold text-xl">
@@ -44,7 +45,17 @@ function SuccessMessage({ message, onClose }) {
             <p className="font-bold">
                 {message}
             </p>
-        </div>
+
+            <button
+                type="button"
+                onClick={onClose}
+                className="text-white/80 hover:text-white text-xl font-bold"
+                aria-label="Melding sluiten"
+            >
+                <X size={20} />
+            </button>
+        </div>,
+        document.body
     );
 }
 

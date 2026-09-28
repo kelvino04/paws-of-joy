@@ -27,7 +27,7 @@ function Header() {
             >
                 {menuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
-            <nav className="gap-3 text-black font-bold text-base items-center p-2 hidden lg:flex">
+            <nav className="gap-5 text-black font-bold text-base items-center p-2 hidden lg:flex">
                 <a href="/" className="nav-link">Home</a>
                 <a href="/about" className="nav-link">Wie ben ik</a>
                 <a href="/tarifs" className="nav-link">Tarieven</a>
