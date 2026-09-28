@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Price;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\PriceController;
 
 
 /*
@@ -82,7 +83,7 @@ Route::post('/logout', [AuthController::class, 'logout'])
 */
 
 Route::get('/admin', function () {
-    return view('admin');
+    return view('admin.admin');
 })->middleware('admin');
 
 Route::get('/admin/status', function () {
@@ -90,3 +91,27 @@ Route::get('/admin/status', function () {
         'authenticated' => auth()->check() && auth()->user()->is_admin,
     ]);
 });
+
+Route::prefix('admin/tarifs')
+    ->middleware('admin')
+    ->name('admin.tarifs.')
+    ->group(function () {
+
+        Route::get('/', [PriceController::class, 'index'])
+            ->name('index');
+
+        Route::get('/create', [PriceController::class, 'create'])
+            ->name('create');
+
+        Route::post('/', [PriceController::class, 'store'])
+            ->name('store');
+
+        Route::get('/{price}/edit', [PriceController::class, 'edit'])
+            ->name('edit');
+
+        Route::put('/{price}', [PriceController::class, 'update'])
+            ->name('update');
+
+        Route::delete('/{price}', [PriceController::class, 'destroy'])
+            ->name('destroy');
+    });

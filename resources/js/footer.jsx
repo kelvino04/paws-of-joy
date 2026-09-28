@@ -97,7 +97,7 @@ function Footer() {
                     <p>Gemaakt door <a href="https://www.linkedin.com/in/kelvin-sophie-a90298325/"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="hover:text-yellow transition-colors">Kelvin Sophie</a></p>
+                        className="hover:text-yellow transition-colors underline">Kelvin Sophie</a></p>
                 </div>
             </div>
 
