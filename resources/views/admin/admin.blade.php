@@ -89,6 +89,29 @@
 
                 </article>
 
+                {{-- Pagina's --}}
+                <article class="card reveal">
+
+                    <div class="card-content">
+
+                        <h2 class="text-2xl font-bold text-brown mb-3">
+                            Pagina's
+                        </h2>
+
+                        <p class="text-brown leading-relaxed mb-6">
+                            Pas de teksten van de website aan.
+                            Je kunt hier bijvoorbeeld de teksten van de homepagina
+                            en de contactpagina wijzigen.
+                        </p>
+
+                        <a href="/admin/pages" class="btn">
+                            Pagina's beheren
+                        </a>
+
+                    </div>
+
+                </article>
+
             </div>
 
         </section>

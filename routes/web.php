@@ -2,10 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Price;
+use App\Models\PageContent;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PriceController;
-
+use App\Http\Controllers\PageContentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +15,11 @@ use App\Http\Controllers\PriceController;
 */
 
 Route::get('/', function () {
-    return view('home');
+    $contents = PageContent::where('page', 'home')
+        ->get()
+        ->keyBy('key');
+
+    return view('home', compact('contents'));
 });
 
 Route::get('/about', function () {
@@ -114,4 +119,19 @@ Route::prefix('admin/tarifs')
 
         Route::delete('/{price}', [PriceController::class, 'destroy'])
             ->name('destroy');
+    });
+
+Route::prefix('admin/pages')
+    ->middleware('admin')
+    ->name('admin.pages.')
+    ->group(function () {
+
+        Route::get('/', [PageContentController::class, 'index'])
+            ->name('index');
+
+        Route::get('/home/edit', [PageContentController::class, 'editHome'])
+            ->name('home.edit');
+
+        Route::put('/home', [PageContentController::class, 'updateHome'])
+            ->name('home.update');
     });

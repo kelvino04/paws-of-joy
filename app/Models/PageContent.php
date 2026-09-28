@@ -6,5 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class PageContent extends Model
 {
-    //
+    protected $fillable = [
+        'page',
+        'key',
+        'title',
+        'content',
+    ];
 }
