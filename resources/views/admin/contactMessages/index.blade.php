@@ -47,7 +47,7 @@
                 <div class="space-y-4">
 
                     @foreach ($messages as $message)
-                        <article class="card">
+                        <article class="card {{ $message->viewed_at ? 'opacity-75' : 'border-2 border-green bg-green/5' }}">
 
                             <div class="card-content">
 
@@ -62,6 +62,18 @@
                                         <p class="text-brown mt-1">
                                             {{ $message->name }}
                                         </p>
+
+                                        @if (!$message->viewed_at)
+                                            <span class="bg-green text-white text-xs font-bold px-3 py-1 rounded-full">
+                                                Ongelezen
+                                            </span>
+                                        @else
+                                            <span
+                                                class="bg-gray-200 text-gray-600 text-xs font-bold px-3 py-1 rounded-full">
+                                                Gelezen
+                                            </span>
+                                        @endif
+
 
                                         <p class="text-brown text-sm mt-1">
                                             {{ $message->email }}
