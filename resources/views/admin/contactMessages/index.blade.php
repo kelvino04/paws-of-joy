@@ -27,6 +27,31 @@
                     Bekijk hier de berichten die via het contactformulier zijn verzonden.
                 </p>
 
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+
+                    <form method="POST" action="{{ route('admin.contact-messages.mark-all-read') }}">
+                        @csrf
+                        @method('PUT')
+
+                        <button type="submit"
+                            class="bg-green text-white font-bold py-2 px-4 rounded-lg hover:opacity-90 transition-all duration-200 hover:scale-105 shadow-md">
+                            Alles als gelezen
+                        </button>
+                    </form>
+
+                    <form method="POST" action="{{ route('admin.contact-messages.destroy-all') }}"
+                        onsubmit="return confirm('Weet je zeker dat je alle contactberichten wilt verwijderen? Dit kan niet ongedaan worden gemaakt.')">
+                        @csrf
+                        @method('DELETE')
+
+                        <button type="submit"
+                            class="bg-red-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-red-700 transition-all duration-200 hover:scale-105 shadow-md">
+                            Alle berichten verwijderen
+                        </button>
+                    </form>
+
+                </div>
+
             </div>
 
 

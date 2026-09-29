@@ -148,6 +148,12 @@ Route::prefix('admin/contact-messages')
         Route::get('/', [ContactMessageController::class, 'index'])
             ->name('index');
 
+        Route::put('/mark-all-read', [ContactMessageController::class, 'markAllRead'])
+            ->name('mark-all-read');
+
+        Route::delete('/delete-all', [ContactMessageController::class, 'destroyAll'])
+            ->name('destroy-all');
+
         Route::get('/{contactMessage}', [ContactMessageController::class, 'show'])
             ->name('show');
 

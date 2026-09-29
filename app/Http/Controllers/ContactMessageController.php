@@ -24,6 +24,18 @@ class ContactMessageController extends Controller
         return view('admin.contactMessages.show', compact('contactMessage'));
     }
 
+    public function markAllRead()
+    {
+        ContactMessage::whereNull('viewed_at')->update([
+            'viewed_at' => now(),
+        ]);
+
+        return redirect('/admin/contact-messages')->with(
+            'success',
+            'Alle contactberichten zijn als gelezen gemarkeerd.'
+        );
+    }
+
     public function destroy(ContactMessage $contactMessage)
     {
         $contactMessage->delete();
@@ -31,6 +43,16 @@ class ContactMessageController extends Controller
         return redirect('/admin/contact-messages')->with(
             'success',
             'Het contactbericht is verwijderd.'
+        );
+    }
+
+    public function destroyAll()
+    {
+        ContactMessage::query()->delete();
+
+        return redirect('/admin/contact-messages')->with(
+            'success',
+            'Alle contactberichten zijn verwijderd.'
         );
     }
 }
