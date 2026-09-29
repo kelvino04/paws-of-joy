@@ -105,6 +105,30 @@ Route::get('/admin/status', function () {
     ]);
 });
 
+Route::prefix('admin/tarifs')
+    ->middleware('admin')
+    ->name('admin.tarifs.')
+    ->group(function () {
+
+        Route::get('/', [PriceController::class, 'index'])
+            ->name('index');
+
+        Route::get('/create', [PriceController::class, 'create'])
+            ->name('create');
+
+        Route::post('/', [PriceController::class, 'store'])
+            ->name('store');
+
+        Route::get('/{price}/edit', [PriceController::class, 'edit'])
+            ->name('edit');
+
+        Route::put('/{price}', [PriceController::class, 'update'])
+            ->name('update');
+
+        Route::delete('/{price}', [PriceController::class, 'destroy'])
+            ->name('destroy');
+    });
+
 Route::prefix('admin/pages')
     ->middleware('admin')
     ->name('admin.pages.')
