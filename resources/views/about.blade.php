@@ -15,8 +15,10 @@
                     belangrijk onderdeel van mijn leven geweest. Mijn liefde voor honden, mijn ervaring en mijn kennis
                     van hondengedrag vormen samen de basis van Paws of joy.</p>
             </div>
-            <img src="{{ asset('images/miriam.jpeg') }}" alt="Miriam Sophie met haar honden"
-                class="w-full md:w-1/2 h-80 md:h-96 object-cover rounded-2xl shadow-lg">
+            <img src="{{ $contents->get('about_image')?->content
+                ? asset('storage/' . $contents->get('about_image')->content)
+                : asset('images/miriam.jpeg') }}"
+                alt="Miriam Sophie met haar honden" class="w-full md:w-1/2 h-80 md:h-96 object-cover rounded-2xl shadow-lg">
         </div>
         <div class="bg-cream px-6 py-16">
             <div class="max-w-4xl mx-auto">

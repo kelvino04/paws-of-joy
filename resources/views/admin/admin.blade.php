@@ -126,6 +126,24 @@
 
                 </article>
 
+                {{-- Afbeeldingen --}}
+                <article class="card reveal">
+                    <div class="card-content">
+                        <h2 class="text-2xl font-bold text-brown mb-3">
+                            Afbeeldingen
+                        </h2>
+
+                        <p class="text-brown leading-relaxed mb-6">
+                            Upload en vervang de foto’s op de homepage
+                            (hero, wandelingen, speurlessen en speurhonden).
+                        </p>
+
+                        <a href="{{ route('admin.images.edit') }}" class="btn">
+                            Afbeeldingen beheren
+                        </a>
+                    </div>
+                </article>
+
             </div>
 
         </section>

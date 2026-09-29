@@ -25,7 +25,11 @@ Route::get('/', function () {
 });
 
 Route::get('/about', function () {
-    return view('about');
+    $contents = \App\Models\PageContent::where('page', 'about')
+        ->get()
+        ->keyBy('key');
+
+    return view('about', compact('contents'));
 });
 
 Route::get('/tarifs', function () {
@@ -101,30 +105,6 @@ Route::get('/admin/status', function () {
     ]);
 });
 
-Route::prefix('admin/tarifs')
-    ->middleware('admin')
-    ->name('admin.tarifs.')
-    ->group(function () {
-
-        Route::get('/', [PriceController::class, 'index'])
-            ->name('index');
-
-        Route::get('/create', [PriceController::class, 'create'])
-            ->name('create');
-
-        Route::post('/', [PriceController::class, 'store'])
-            ->name('store');
-
-        Route::get('/{price}/edit', [PriceController::class, 'edit'])
-            ->name('edit');
-
-        Route::put('/{price}', [PriceController::class, 'update'])
-            ->name('update');
-
-        Route::delete('/{price}', [PriceController::class, 'destroy'])
-            ->name('destroy');
-    });
-
 Route::prefix('admin/pages')
     ->middleware('admin')
     ->name('admin.pages.')
@@ -139,6 +119,15 @@ Route::prefix('admin/pages')
         Route::put('/home', [PageContentController::class, 'updateHome'])
             ->name('home.update');
     });
+
+// Afbeeldingen
+Route::middleware('admin')->group(function () {
+    Route::get('/admin/images', [PageContentController::class, 'editImages'])
+        ->name('admin.images.edit');
+
+    Route::put('/admin/images', [PageContentController::class, 'updateImages'])
+        ->name('admin.images.update');
+});
 
 Route::prefix('admin/contact-messages')
     ->middleware('admin')

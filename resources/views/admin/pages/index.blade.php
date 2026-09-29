@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Pagina's beheren | Paws of joy')
+@section('title', 'Pagina\'s beheren | Paws of joy')
 
 @section('content')
 
@@ -10,10 +10,7 @@
 
             <div class="mb-8">
 
-                <a
-                    href="/admin"
-                    class="text-brown font-bold hover:text-yellow transition-colors"
-                >
+                <a href="/admin" class="text-brown font-bold hover:text-yellow transition-colors">
                     ← Terug naar admin
                 </a>
 
@@ -47,10 +44,7 @@
                             Pas de teksten van de homepagina aan.
                         </p>
 
-                        <a
-                            href="{{ route('admin.pages.home.edit') }}"
-                            class="btn"
-                        >
+                        <a href="{{ route('admin.pages.home.edit') }}" class="btn">
                             Home bewerken
                         </a>
 
@@ -73,11 +67,8 @@
                             worden aangepast.
                         </p>
 
-                        <button
-                            type="button"
-                            disabled
-                            class="bg-gray-300 text-gray-500 font-bold py-2 px-4 rounded-lg cursor-not-allowed"
-                        >
+                        <button type="button" disabled
+                            class="bg-gray-300 text-gray-500 font-bold py-2 px-4 rounded-lg cursor-not-allowed">
                             Binnenkort beschikbaar
                         </button>
 

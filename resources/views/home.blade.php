@@ -9,8 +9,10 @@
         {{-- Hero --}}
         <div class="relative h-80 md:h-100">
 
-            <img src="{{ asset('images/roedel-2.jpg') }}" alt="Honden in een veld aan het rennen"
-                class="w-full h-full object-cover mx-auto rounded shadow-lg">
+            <img src="{{ $contents->get('hero_image')?->content
+                ? asset('storage/' . $contents->get('hero_image')->content)
+                : asset('images/roedel-2.jpg') }}"
+                alt="Honden in een veld aan het rennen" class="w-full h-full object-cover mx-auto rounded shadow-lg">
 
             <div class="absolute inset-0 flex flex-col items-center justify-center bg-black/20">
 
@@ -53,8 +55,10 @@
                 {{-- Wandelingen --}}
                 <div class="card reveal">
 
-                    <img src="{{ asset('images/roedel-1.jpg') }}" alt="Honden in een veld aan het rennen"
-                        class="w-full h-56 object-cover">
+                    <img src="{{ $contents->get('walk_image')?->content
+                        ? asset('storage/' . $contents->get('walk_image')->content)
+                        : asset('images/roedel-1.jpg') }}"
+                        alt="Honden in een veld aan het rennen" class="w-full h-56 object-cover">
 
                     <div class="card-content">
 
@@ -78,8 +82,10 @@
                 {{-- Speurlessen --}}
                 <div class="card reveal">
 
-                    <img src="{{ asset('images/trackingLesson.jpeg') }}" alt="Honden aan het speuren in het bos"
-                        class="w-full h-56 object-cover">
+                    <img src="{{ $contents->get('lesson_image')?->content
+                        ? asset('storage/' . $contents->get('lesson_image')->content)
+                        : asset('images/trackingLesson.jpeg') }}"
+                        alt="Honden aan het speuren in het bos" class="w-full h-56 object-cover">
 
                     <div class="card-content">
 
@@ -103,8 +109,10 @@
                 {{-- Speurhonden --}}
                 <div class="card reveal">
 
-                    <img src="{{ asset('images/ginEnMil.jpeg') }}" alt="Speurhonden in een veld"
-                        class="w-full h-56 object-cover">
+                    <img src="{{ $contents->get('tracking_image')?->content
+                        ? asset('storage/' . $contents->get('tracking_image')->content)
+                        : asset('images/ginEnMil.jpeg') }}"
+                        alt="Speurhonden in een veld" class="w-full h-56 object-cover">
 
                     <div class="card-content">
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\PageContent;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PageContentController extends Controller
 {
@@ -25,115 +26,64 @@ class PageContentController extends Controller
     {
         $validated = $request->validate([
             // Hero
-            'hero_title' => 'required|string|max:255',
-            'hero_text' => 'required|string',
+            'hero_title'  => 'required|string|max:255',
+            'hero_text'   => 'required|string',
             'hero_button' => 'required|string|max:255',
 
             // Diensten
             'services_title' => 'required|string|max:255',
-            'services_text' => 'required|string',
+            'services_text'  => 'required|string',
 
             // Wandelingen
-            'walk_title' => 'required|string|max:255',
-            'walk_text' => 'required|string',
+            'walk_title'  => 'required|string|max:255',
+            'walk_text'   => 'required|string',
             'walk_button' => 'required|string|max:255',
 
             // Speurlessen
-            'lesson_title' => 'required|string|max:255',
-            'lesson_text' => 'required|string',
+            'lesson_title'  => 'required|string|max:255',
+            'lesson_text'   => 'required|string',
             'lesson_button' => 'required|string|max:255',
 
             // Speurhonden
-            'tracking_title' => 'required|string|max:255',
-            'tracking_text' => 'required|string',
+            'tracking_title'  => 'required|string|max:255',
+            'tracking_text'   => 'required|string',
             'tracking_button' => 'required|string|max:255',
         ]);
 
         $contents = [
             // Hero
-            'hero_title' => [
-                'title' => 'Hero titel',
-                'content' => $validated['hero_title'],
-            ],
-
-            'hero_text' => [
-                'title' => 'Hero tekst',
-                'content' => $validated['hero_text'],
-            ],
-
-            'hero_button' => [
-                'title' => 'Hero knop',
-                'content' => $validated['hero_button'],
-            ],
+            'hero_title'  => ['title' => 'Hero titel',  'content' => $validated['hero_title']],
+            'hero_text'   => ['title' => 'Hero tekst',  'content' => $validated['hero_text']],
+            'hero_button' => ['title' => 'Hero knop',   'content' => $validated['hero_button']],
 
             // Diensten
-            'services_title' => [
-                'title' => 'Diensten titel',
-                'content' => $validated['services_title'],
-            ],
-
-            'services_text' => [
-                'title' => 'Diensten tekst',
-                'content' => $validated['services_text'],
-            ],
+            'services_title' => ['title' => 'Diensten titel', 'content' => $validated['services_title']],
+            'services_text'  => ['title' => 'Diensten tekst',  'content' => $validated['services_text']],
 
             // Wandelingen
-            'walk_title' => [
-                'title' => 'Wandelingen titel',
-                'content' => $validated['walk_title'],
-            ],
-
-            'walk_text' => [
-                'title' => 'Wandelingen tekst',
-                'content' => $validated['walk_text'],
-            ],
-
-            'walk_button' => [
-                'title' => 'Wandelingen knop',
-                'content' => $validated['walk_button'],
-            ],
+            'walk_title'  => ['title' => 'Wandelingen titel', 'content' => $validated['walk_title']],
+            'walk_text'   => ['title' => 'Wandelingen tekst',  'content' => $validated['walk_text']],
+            'walk_button' => ['title' => 'Wandelingen knop',   'content' => $validated['walk_button']],
 
             // Speurlessen
-            'lesson_title' => [
-                'title' => 'Speurlessen titel',
-                'content' => $validated['lesson_title'],
-            ],
-
-            'lesson_text' => [
-                'title' => 'Speurlessen tekst',
-                'content' => $validated['lesson_text'],
-            ],
-
-            'lesson_button' => [
-                'title' => 'Speurlessen knop',
-                'content' => $validated['lesson_button'],
-            ],
+            'lesson_title'  => ['title' => 'Speurlessen titel', 'content' => $validated['lesson_title']],
+            'lesson_text'   => ['title' => 'Speurlessen tekst',  'content' => $validated['lesson_text']],
+            'lesson_button' => ['title' => 'Speurlessen knop',   'content' => $validated['lesson_button']],
 
             // Speurhonden
-            'tracking_title' => [
-                'title' => 'Speurhonden titel',
-                'content' => $validated['tracking_title'],
-            ],
-
-            'tracking_text' => [
-                'title' => 'Speurhonden tekst',
-                'content' => $validated['tracking_text'],
-            ],
-
-            'tracking_button' => [
-                'title' => 'Speurhonden knop',
-                'content' => $validated['tracking_button'],
-            ],
+            'tracking_title'  => ['title' => 'Speurhonden titel', 'content' => $validated['tracking_title']],
+            'tracking_text'   => ['title' => 'Speurhonden tekst',  'content' => $validated['tracking_text']],
+            'tracking_button' => ['title' => 'Speurhonden knop',   'content' => $validated['tracking_button']],
         ];
 
         foreach ($contents as $key => $data) {
             PageContent::updateOrCreate(
                 [
                     'page' => 'home',
-                    'key' => $key,
+                    'key'  => $key,
                 ],
                 [
-                    'title' => $data['title'],
+                    'title'   => $data['title'],
                     'content' => $data['content'],
                 ]
             );
@@ -143,5 +93,93 @@ class PageContentController extends Controller
             'success',
             'De teksten van de homepagina zijn opgeslagen.'
         );
+    }
+
+    // ========================================
+    // AFBEELDINGEN
+    // ========================================
+
+    public function editImages()
+    {
+        $contents = PageContent::whereIn('page', ['home', 'about', 'trackingLessons', 'tracking'])
+            ->whereIn('key', [
+                // Home
+                'hero_image',
+                'walk_image',
+                'lesson_image',
+                'tracking_image',
+                // About
+                'about_image',
+                // Toekomstige pagina's (alvast klaarzetten)
+                'tracking_lessons_hero',
+                'tracking_hero',
+            ])
+            ->get()
+            ->keyBy(fn($item) => $item->page . '.' . $item->key);
+
+        return view('admin.images.edit', compact('contents'));
+    }
+
+    public function updateImages(Request $request)
+    {
+        $request->validate([
+            // Home
+            'hero_image'            => 'nullable|image|mimes:jpg,jpeg,png,webp|max:4096',
+            'walk_image'            => 'nullable|image|mimes:jpg,jpeg,png,webp|max:4096',
+            'lesson_image'          => 'nullable|image|mimes:jpg,jpeg,png,webp|max:4096',
+            'tracking_image'        => 'nullable|image|mimes:jpg,jpeg,png,webp|max:4096',
+            // About
+            'about_image'           => 'nullable|image|mimes:jpg,jpeg,png,webp|max:4096',
+            // Toekomstig
+            'tracking_lessons_hero' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:4096',
+            'tracking_hero'         => 'nullable|image|mimes:jpg,jpeg,png,webp|max:4096',
+        ]);
+
+        $images = [
+            // page => [key => title]
+            'home' => [
+                'hero_image'     => 'Hero afbeelding',
+                'walk_image'     => 'Wandelingen afbeelding',
+                'lesson_image'   => 'Speurlessen afbeelding',
+                'tracking_image' => 'Speurhonden afbeelding',
+            ],
+            'about' => [
+                'about_image' => 'Portret Miriam',
+            ],
+            'trackingLessons' => [
+                'tracking_lessons_hero' => 'Speurlessen hero',
+            ],
+            'tracking' => [
+                'tracking_hero' => 'Speurhonden hero',
+            ],
+        ];
+
+        foreach ($images as $page => $keys) {
+            foreach ($keys as $key => $title) {
+                if ($request->hasFile($key)) {
+                    // Oude afbeelding verwijderen
+                    $old = PageContent::where('page', $page)->where('key', $key)->first();
+                    if ($old && $old->content && Storage::disk('public')->exists($old->content)) {
+                        Storage::disk('public')->delete($old->content);
+                    }
+
+                    $path = $request->file($key)->store('images', 'public');
+
+                    PageContent::updateOrCreate(
+                        [
+                            'page' => $page,
+                            'key'  => $key,
+                        ],
+                        [
+                            'title'   => $title,
+                            'content' => $path,
+                        ]
+                    );
+                }
+            }
+        }
+
+        return redirect()->route('admin.images.edit')
+            ->with('success', 'Afbeeldingen zijn bijgewerkt.');
     }
 }

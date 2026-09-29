@@ -6,9 +6,18 @@
 
     <main class="bg-cream min-h-screen">
 
-        <section class="max-w-6xl mx-auto px-6 pt-16 pb-10">
+        <section class="max-w-6xl mx-auto px-6 pt-16">
 
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+            <div class="mb-8">
+
+                <a href="/admin" class="text-brown font-bold hover:text-yellow transition-colors">
+                    ← Terug naar admin
+                </a>
+
+            </div>
+
+
+            <div class="text-center mb-10">
 
                 <div>
                     <h1 class="text-4xl md:text-5xl font-bold italic text-green mb-4">
@@ -20,7 +29,8 @@
                     </p>
                 </div>
 
-                <a href="{{ route('admin.tarifs.create') }}" class="btn">
+                <a href="{{ route('admin.tarifs.create') }}"
+                    class="hover:scale-105 transition-transform inline-block mt-6 bg-brown text-white font-bold py-3 px-6 rounded-lg shadow-md hover:bg-yellow hover:text-black">
                     Tarief toevoegen
                 </a>
 
@@ -31,7 +41,7 @@
 
         <section class="max-w-6xl mx-auto px-6 pb-16">
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8">
 
                 @forelse ($prices as $price)
                     <article class="card">
