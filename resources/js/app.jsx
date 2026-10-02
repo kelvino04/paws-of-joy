@@ -6,6 +6,7 @@ import Footer from './footer.jsx';
 import ContactForm from './contactForm.jsx';
 import LoadingScreen from './loadingScreen.jsx';
 import SuccessMessage from './successMessage.jsx';
+import ScrollToTop from "./scrollToTop.jsx";
 
 if ('scrollRestoration' in history) {
     history.scrollRestoration = 'manual';
@@ -171,4 +172,11 @@ if (successMessageElement) {
             />
         );
     }
+}
+
+//scroll naar boven
+const scrollElement = document.getElementById("ScrollToTop");
+
+if (scrollElement) {
+    createRoot(scrollElement).render(<ScrollToTop />);
 }

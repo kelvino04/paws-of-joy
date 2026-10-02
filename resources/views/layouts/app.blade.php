@@ -34,6 +34,8 @@
 
     </div>
 
+    <div id="ScrollToTop"></div>
+
 </body>
 
 </html>
