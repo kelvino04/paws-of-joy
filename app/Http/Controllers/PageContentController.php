@@ -103,16 +103,16 @@ class PageContentController extends Controller
     {
         $contents = PageContent::whereIn('page', ['home', 'about', 'trackingLessons', 'tracking'])
             ->whereIn('key', [
-                // Home
                 'hero_image',
                 'walk_image',
                 'lesson_image',
                 'tracking_image',
-                // About
                 'about_image',
-                // Toekomstige pagina's (alvast klaarzetten)
                 'tracking_lessons_hero',
                 'tracking_hero',
+                'hero_image_position',
+                'tracking_hero_position',
+                'tracking_lessons_hero_position',
             ])
             ->get()
             ->keyBy(fn($item) => $item->page . '.' . $item->key);
@@ -123,20 +123,20 @@ class PageContentController extends Controller
     public function updateImages(Request $request)
     {
         $request->validate([
-            // Home
             'hero_image'            => 'nullable|image|mimes:jpg,jpeg,png,webp|max:4096',
             'walk_image'            => 'nullable|image|mimes:jpg,jpeg,png,webp|max:4096',
             'lesson_image'          => 'nullable|image|mimes:jpg,jpeg,png,webp|max:4096',
             'tracking_image'        => 'nullable|image|mimes:jpg,jpeg,png,webp|max:4096',
-            // About
             'about_image'           => 'nullable|image|mimes:jpg,jpeg,png,webp|max:4096',
-            // Toekomstig
             'tracking_lessons_hero' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:4096',
             'tracking_hero'         => 'nullable|image|mimes:jpg,jpeg,png,webp|max:4096',
+
+            'hero_image_position'            => 'nullable|in:top,center,bottom',
+            'tracking_hero_position'         => 'nullable|in:top,center,bottom',
+            'tracking_lessons_hero_position' => 'nullable|in:top,center,bottom',
         ]);
 
         $images = [
-            // page => [key => title]
             'home' => [
                 'hero_image'     => 'Hero afbeelding',
                 'walk_image'     => 'Wandelingen afbeelding',
@@ -157,29 +157,46 @@ class PageContentController extends Controller
         foreach ($images as $page => $keys) {
             foreach ($keys as $key => $title) {
                 if ($request->hasFile($key)) {
-                    // Oude afbeelding verwijderen
                     $old = PageContent::where('page', $page)->where('key', $key)->first();
-                    if ($old && $old->content && Storage::disk('public')->exists($old->content)) {
-                        Storage::disk('public')->delete($old->content);
+                    if ($old && $old->content && \Storage::disk('public')->exists($old->content)) {
+                        \Storage::disk('public')->delete($old->content);
                     }
 
                     $path = $request->file($key)->store('images', 'public');
 
                     PageContent::updateOrCreate(
-                        [
-                            'page' => $page,
-                            'key'  => $key,
-                        ],
-                        [
-                            'title'   => $title,
-                            'content' => $path,
-                        ]
+                        ['page' => $page, 'key' => $key],
+                        ['title' => $title, 'content' => $path]
+                    );
+                }
+            }
+        }
+
+        // Posities opslaan
+        $positions = [
+            'home' => [
+                'hero_image_position' => 'Homepage hero positie',
+            ],
+            'tracking' => [
+                'tracking_hero_position' => 'Speurhonden hero positie',
+            ],
+            'trackingLessons' => [
+                'tracking_lessons_hero_position' => 'Speurlessen hero positie',
+            ],
+        ];
+
+        foreach ($positions as $page => $keys) {
+            foreach ($keys as $key => $title) {
+                if ($request->filled($key)) {
+                    PageContent::updateOrCreate(
+                        ['page' => $page, 'key' => $key],
+                        ['title' => $title, 'content' => $request->input($key)]
                     );
                 }
             }
         }
 
         return redirect()->route('admin.images.edit')
-            ->with('success', 'Afbeeldingen zijn bijgewerkt.');
+            ->with('success', 'Afbeeldingen en posities zijn bijgewerkt.');
     }
 }

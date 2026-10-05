@@ -14,7 +14,7 @@
                     ->value('content');
             @endphp
 
-            <img src="{{ $heroImage ? asset('storage/' . $heroImage) : asset('images/ginEnMil.jpeg') }}"
+            <img src="{{ $heroImage ? asset('storage/' . $heroImage) : asset('images/ginEnMilHero.jpeg') }}"
                 alt="Speurhonden aan het werk" class="w-full h-full object-cover">
 
             <div class="absolute inset-0 flex flex-col items-center justify-center bg-black/30">

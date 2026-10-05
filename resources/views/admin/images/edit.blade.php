@@ -128,47 +128,54 @@
                             </div>
                         </div>
 
-                        {{-- ==================== TOEKOMSTIGE PAGINA'S ==================== --}}
+                        {{-- ==================== SPEURLESSEN ==================== --}}
                         <div>
                             <h2 class="text-3xl font-bold text-green mb-8 border-b border-brown/20 pb-3">
-                                Speurlessen & Speurhonden pagina’s
-                                <span class="text-base font-normal text-brown/70">(komen later)</span>
+                                Speurlessen
                             </h2>
 
-                            <div class="space-y-10">
-                                <div>
-                                    <h3 class="text-xl font-bold text-brown mb-3">Speurlessen – Hero afbeelding</h3>
-                                    @php $img = $contents->get('trackingLessons.tracking_lessons_hero')?->content; @endphp
-                                    @if ($img)
-                                        <img src="{{ asset('storage/' . $img) }}"
-                                            class="w-full max-h-56 object-cover rounded-lg mb-3 shadow"
-                                            alt="Speurlessen hero">
-                                    @else
-                                        <div
-                                            class="w-full h-40 bg-brown/10 rounded-lg mb-3 flex items-center justify-center text-brown/50">
-                                            Nog geen afbeelding
-                                        </div>
-                                    @endif
-                                    <input type="file" name="tracking_lessons_hero" accept="image/*"
-                                        class="w-full border border-brown/30 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green">
-                                </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-brown mb-3">Hero afbeelding</h3>
+                                @php $img = $contents->get('trackingLessons.tracking_lessons_hero')?->content; @endphp
 
-                                <div>
-                                    <h3 class="text-xl font-bold text-brown mb-3">Speurhonden – Hero afbeelding</h3>
-                                    @php $img = $contents->get('tracking.tracking_hero')?->content; @endphp
-                                    @if ($img)
-                                        <img src="{{ asset('storage/' . $img) }}"
-                                            class="w-full max-h-56 object-cover rounded-lg mb-3 shadow"
-                                            alt="Speurhonden hero">
-                                    @else
-                                        <div
-                                            class="w-full h-40 bg-brown/10 rounded-lg mb-3 flex items-center justify-center text-brown/50">
-                                            Nog geen afbeelding
-                                        </div>
-                                    @endif
-                                    <input type="file" name="tracking_hero" accept="image/*"
-                                        class="w-full border border-brown/30 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green">
-                                </div>
+                                @if ($img)
+                                    <img src="{{ asset('storage/' . $img) }}"
+                                        class="w-full max-h-56 object-cover rounded-lg mb-3 shadow" alt="Speurlessen hero">
+                                @else
+                                    <img src="{{ asset('images/trackingLesson.jpeg') }}"
+                                        class="w-full max-h-56 object-cover rounded-lg mb-3 shadow"
+                                        alt="Standaard speurlessen">
+                                    <p class="text-sm text-brown/70 mb-2">Standaard afbeelding</p>
+                                @endif
+
+                                <input type="file" name="tracking_lessons_hero" accept="image/*"
+                                    class="w-full border border-brown/30 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green">
+                            </div>
+                        </div>
+
+
+                        {{-- ==================== SPEURHONDEN ==================== --}}
+                        <div>
+                            <h2 class="text-3xl font-bold text-green mb-8 border-b border-brown/20 pb-3">
+                                Speurhonden
+                            </h2>
+
+                            <div>
+                                <h3 class="text-xl font-bold text-brown mb-3">Hero afbeelding</h3>
+                                @php $img = $contents->get('tracking.tracking_hero')?->content; @endphp
+
+                                @if ($img)
+                                    <img src="{{ asset('storage/' . $img) }}"
+                                        class="w-full max-h-56 object-cover rounded-lg mb-3 shadow" alt="Speurhonden hero">
+                                @else
+                                    <img src="{{ asset('images/ginEnMil.jpeg') }}"
+                                        class="w-full max-h-56 object-cover rounded-lg mb-3 shadow"
+                                        alt="Standaard speurhonden">
+                                    <p class="text-sm text-brown/70 mb-2">Standaard afbeelding</p>
+                                @endif
+
+                                <input type="file" name="tracking_hero" accept="image/*"
+                                    class="w-full border border-brown/30 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green">
                             </div>
                         </div>
 

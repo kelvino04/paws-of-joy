@@ -66,43 +66,6 @@
 
                 </article>
 
-
-                {{-- Contactberichten --}}
-                <article class="card">
-
-                    <div class="card-content">
-
-                        <h2 class="text-2xl font-bold text-brown mb-3">
-                            Contactberichten
-                        </h2>
-
-                        <p class="text-brown leading-relaxed mb-4">
-                            Bekijk de berichten die via het contactformulier zijn ontvangen.
-                        </p>
-
-                        <div class="mb-6">
-
-                            @if ($unreadMessages > 0)
-                                <p class="text-green font-bold text-lg">
-                                    {{ $unreadMessages }}
-                                    {{ $unreadMessages === 1 ? 'ongelezen bericht' : 'ongelezen berichten' }}
-                                </p>
-                            @else
-                                <p class="text-brown font-bold">
-                                    Geen ongelezen berichten
-                                </p>
-                            @endif
-
-                        </div>
-
-                        <a href="{{ route('admin.contact-messages.index') }}" class="btn">
-                            Bekijk contactberichten
-                        </a>
-
-                    </div>
-
-                </article>
-
                 {{-- Pagina's --}}
                 <article class="card reveal">
 
@@ -142,6 +105,42 @@
                             Afbeeldingen beheren
                         </a>
                     </div>
+                </article>
+
+                {{-- Contactberichten --}}
+                <article class="card">
+
+                    <div class="card-content">
+
+                        <h2 class="text-2xl font-bold text-brown mb-3">
+                            Contactberichten
+                        </h2>
+
+                        <p class="text-brown leading-relaxed mb-4">
+                            Bekijk de berichten die via het contactformulier zijn ontvangen.
+                        </p>
+
+                        <div class="mb-6">
+
+                            @if ($unreadMessages > 0)
+                                <p class="text-green font-bold text-lg">
+                                    {{ $unreadMessages }}
+                                    {{ $unreadMessages === 1 ? 'ongelezen bericht' : 'ongelezen berichten' }}
+                                </p>
+                            @else
+                                <p class="text-brown font-bold">
+                                    Geen ongelezen berichten
+                                </p>
+                            @endif
+
+                        </div>
+
+                        <a href="{{ route('admin.contact-messages.index') }}" class="btn">
+                            Bekijk contactberichten
+                        </a>
+
+                    </div>
+
                 </article>
 
             </div>

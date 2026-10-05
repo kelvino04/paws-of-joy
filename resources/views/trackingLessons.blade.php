@@ -152,7 +152,7 @@
 
                     <div class="flex gap-5 items-start">
                         <div
-                            class="flex-shrink-0 w-10 h-10 rounded-full bg-green text-black font-bold flex items-center justify-center">
+                            class="shrink-0 w-10 h-10 rounded-full bg-green text-black font-bold flex items-center justify-center">
                             1
                         </div>
                         <div>
@@ -166,7 +166,7 @@
 
                     <div class="flex gap-5 items-start">
                         <div
-                            class="flex-shrink-0 w-10 h-10 rounded-full bg-green text-black font-bold flex items-center justify-center">
+                            class="shrink-0 w-10 h-10 rounded-full bg-green text-black font-bold flex items-center justify-center">
                             2
                         </div>
                         <div>
@@ -181,7 +181,7 @@
 
                     <div class="flex gap-5 items-start">
                         <div
-                            class="flex-shrink-0 w-10 h-10 rounded-full bg-green text-black font-bold flex items-center justify-center">
+                            class="shrink-0 w-10 h-10 rounded-full bg-green text-black font-bold flex items-center justify-center">
                             3
                         </div>
                         <div>
@@ -196,7 +196,7 @@
 
                     <div class="flex gap-5 items-start">
                         <div
-                            class="flex-shrink-0 w-10 h-10 rounded-full bg-green text-black font-bold flex items-center justify-center">
+                            class="shrink-0 w-10 h-10 rounded-full bg-green text-black font-bold flex items-center justify-center">
                             4
                         </div>
                         <div>
