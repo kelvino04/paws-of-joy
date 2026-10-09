@@ -108,8 +108,7 @@
                 </article>
 
                 {{-- Contactberichten --}}
-                <article class="card">
-
+                <article class="card reveal">
                     <div class="card-content">
 
                         <h2 class="text-2xl font-bold text-brown mb-3">

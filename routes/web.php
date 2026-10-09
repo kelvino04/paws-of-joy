@@ -40,12 +40,20 @@ Route::get('/tarifs', function () {
     return view('tarifs', compact('prices'));
 });
 
-Route::get('/trackingLessons', function () {
-    return view('trackingLessons');
+Route::get('/tracking-lessons', function () {
+    $contents = \App\Models\PageContent::where('page', 'trackingLessons')
+        ->get()
+        ->keyBy('key');
+
+    return view('trackingLessons', compact('contents'));
 });
 
 Route::get('/tracking', function () {
-    return view('tracking');
+    $contents = \App\Models\PageContent::where('page', 'tracking')
+        ->get()
+        ->keyBy('key');
+
+    return view('tracking', compact('contents'));
 });
 
 Route::get('/contact', function () {
@@ -137,11 +145,29 @@ Route::prefix('admin/pages')
         Route::get('/', [PageContentController::class, 'index'])
             ->name('index');
 
+        // Home
         Route::get('/home/edit', [PageContentController::class, 'editHome'])
             ->name('home.edit');
-
         Route::put('/home', [PageContentController::class, 'updateHome'])
             ->name('home.update');
+
+        // Wie ben ik
+        Route::get('/about/edit', [PageContentController::class, 'editAbout'])
+            ->name('about.edit');
+        Route::put('/about', [PageContentController::class, 'updateAbout'])
+            ->name('about.update');
+
+        // Speurhonden
+        Route::get('/tracking/edit', [PageContentController::class, 'editTracking'])
+            ->name('tracking.edit');
+        Route::put('/tracking', [PageContentController::class, 'updateTracking'])
+            ->name('tracking.update');
+
+        // Speurlessen
+        Route::get('/tracking-lessons/edit', [PageContentController::class, 'editTrackingLessons'])
+            ->name('tracking-lessons.edit');
+        Route::put('/tracking-lessons', [PageContentController::class, 'updateTrackingLessons'])
+            ->name('tracking-lessons.update');
     });
 
 // Afbeeldingen

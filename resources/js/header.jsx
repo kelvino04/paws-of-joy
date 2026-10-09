@@ -31,7 +31,7 @@ function Header() {
                 <a href="/" className="nav-link">Home</a>
                 <a href="/about" className="nav-link">Wie ben ik</a>
                 <a href="/tarifs" className="nav-link">Tarieven</a>
-                <a href="/trackingLessons" className="nav-link">Speurlessen</a>
+                <a href="/tracking-lessons" className="nav-link">Speurlessen</a>
                 <a href="/tracking" className="nav-link">Speurhonden</a>
                 <a href="/contact" className="nav-link">Contact</a>
                 {isAdmin && (
@@ -48,7 +48,7 @@ function Header() {
                     <a href="/" className="nav-link">Home</a>
                     <a href="/about" className="nav-link">Wie ben ik</a>
                     <a href="/tarifs" className="nav-link">Tarieven</a>
-                    <a href="/trackingLessons" className="nav-link">Speurlessen</a>
+                    <a href="/tracking-lessons" className="nav-link">Speurlessen</a>
                     <a href="/tracking" className="nav-link">Speurhonden</a>
                     <a href="/contact" className="nav-link">Contact</a>
                     {isAdmin && (

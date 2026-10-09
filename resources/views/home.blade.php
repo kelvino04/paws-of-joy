@@ -53,7 +53,7 @@
 
 
                 {{-- Wandelingen --}}
-                <div class="card reveal">
+                <div class="card contact-slide-left">
 
                     <img src="{{ $contents->get('walk_image')?->content
                         ? asset('storage/' . $contents->get('walk_image')->content)
@@ -97,7 +97,7 @@
                             {{ $contents->get('lesson_text')?->content }}
                         </p>
 
-                        <a href="/trackingLessons" class="btn">
+                        <a href="/tracking-lessons" class="btn">
                             {{ $contents->get('lesson_button')?->content }}
                         </a>
 
@@ -107,7 +107,7 @@
 
 
                 {{-- Speurhonden --}}
-                <div class="card reveal">
+                <div class="card contact-slide-right">
 
                     <img src="{{ $contents->get('tracking_image')?->content
                         ? asset('storage/' . $contents->get('tracking_image')->content)
